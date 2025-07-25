@@ -1,4 +1,5 @@
 import argparse
+import regex
 
 def main():
 
@@ -37,9 +38,8 @@ def word_count(filename):
         return len(data.split())
     
 def char_count(filename):
-    with open(filename, "r", encoding="utf-8") as f:
-        data = f.read()
-        return len(data)
+    with open(filename, "r", encoding="utf-8", errors="replace") as f:
+        return len(f.read())
 
 if __name__ == "__main__":
     main()
