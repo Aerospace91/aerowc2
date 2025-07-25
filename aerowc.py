@@ -37,6 +37,8 @@ def word_count(filename):
         data = f.read()
         return len(data.split())
     
+# aerowc shows 332147, WC shows 339292
+# Tried Regex, counting specific characters etc..   
 def char_count(filename):
     with open(filename, "r", encoding="utf-8", errors="replace") as f:
         return len(f.read())
