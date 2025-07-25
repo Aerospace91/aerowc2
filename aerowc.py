@@ -23,25 +23,31 @@ def main():
         print(f"{char_count(args.filename)} {args.filename}")
         
 
+def open_file(filepath):
+    with open(filepath, "r", encoding="utf-8") as f:
+        return f.read()
+    
+def open_binary_file(filepath):
+    with open(filepath, "rb") as f:
+        return f.read()
 
 def byte_count(filename):
-    with open(filename, "rb") as f:
-        return len(f.read())
+    data = open_binary_file(filename)
+    return len(data)
 
 def line_count(filename):
-    with open(filename, "r") as f:
-        return sum(1 for line in f)
+    data = open_file(filename)
+    return data.count('\n')
 
 def word_count(filename):
-    with open(filename, "r") as f:
-        data = f.read()
-        return len(data.split())
+    data = open_file(filename)
+    return len(data.split())
     
 # aerowc shows 332147, WC shows 339292
 # Tried Regex, counting specific characters etc..   
 def char_count(filename):
-    with open(filename, "r", encoding="utf-8", errors="replace") as f:
-        return len(f.read())
+    data = open_file(filename)
+    return len(data)
 
 if __name__ == "__main__":
     main()
